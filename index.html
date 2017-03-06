@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="./css/public.css">
+	<link rel="stylesheet" href="./css/form.css">
+	<script src="./js/jquery-3.1.1.min.js"></script>
+	<script src="./js/artTamplate.js" type="text/javascript"></script>
+	<script  id='template' type="text/html">
+		{{each data as value i}}
+		  {{if 1==1}}
+		    <div type={{value.type}} order={{i}} class="form-item">
+		      <div class="form-content">
+		        <div class="formValue">
+		          <div class="requireFrame">
+		            <span style={{'display:' + (value.require?'display':'none')}} class="require">*</span>
+		          </div>
+		          <span class="formValueDeatail">{{value.name}}</span>
+		        </div>
+		        <div class="formstyle">
+							{{if value.realType=="text"}}
+		          	<input placeholder={{"请输入"+value.name}} readonly class="text" type="text" name="" value="">
+							{{else if value.realType=="password"}}
+			          	<input readonly class="text" type="password" name="" value="xxxxxxxxxxxx">
+		          {{else if value.realType=="textarea"}}
+								<textarea readonly class="moreText" name=""></textarea>
+							{{else if value.realType=="select"}}
+								<select  disabled class="select" style="overflow:hidden;">
+									<option value="">请选择{{value.type != 'select' && value.name}}</option>
+									{{each value.checkFrame as val index }}
+										<option {{val.check&&"selected"}}  class="checkItem" value="{{val.value}}">{{val.content}}</option>
+									{{/each}}
+								</select>
+							{{else if value.realType=="checkbox" ||value.realType=="radio"}}
+								{{each value.checkFrame as val index }}
+									<div class="checkItem">
+										<lable>
+											<input {{val.check?"checked":""}} disabled  order={{index}} class="moreCheck rocheck" type={{value.realType}}>
+											<span class="moreCheckName rocheckName">{{val.content}}</span>
+										</lable>
+									</div>
+								{{/each}}
+							{{else if value.realType=="date"}}
+								<div class="hms">
+									<div class="hsmBlock">
+										<input readonly type="text" class="dateInput">
+										<div>YYYY</div>
+									</div>
+									<div class="hor">-</div>
+									<div class="hsmBlock">
+										<input readonly type="text" class="dateInput">
+										<div>MM</div>
+									</div>
+									<div class="hor">-</div>
+									<div class="hsmBlock">
+										<input readonly type="text" class="dateInput">
+										<div>DD</div>
+									</div>
+								</div>
+							{{else if value.realType=="time"}}
+							<div class="hms">
+								<div class="hsmBlock">
+									<select disabled type="text" class="timeSelect"></select>
+								</div>
+								<div class="hor">:</div>
+								<div class="hsmBlock">
+									<select disabled type="text" class="timeSelect"></select>
+								</div>
+							</div>
+							{{else if value.realType=="hr"}}
+								<div class="dividLine"></div>
+							{{else if value.realType=="describe"}}
+								<div class="smallTitle">小标题</div>
+							{{else if value.realType=="file"}}
+								<input disable class="file" type="text">
+								<div class="scan">浏览..</div>
+							{{else if value.realType=="picture"}}
+								<img src="" class="picture" alt=""/>
+		          {{/if}}
+		        </div>
+		        <div class="close"></div>
+		        <div style={{'display:' + (value.require?'display':'none')}} class="visibleIcon"></div>
+		      </div>
+		      <p class="form-describe">{{value.describe}}</p>
+		    </div>
+		  {{/if}}
+		{{/each}}
+	</script>
+
+	<script id="special" type="text/html">
+		{{each data as value i}}
+			{{if value.realType == "checkbox" || value.realType == "radio" || value.realType == "select"}}
+				<dt class="attributeName">
+					选项设置
+					{{if value.realType != "select"}}
+						<div class="cols">
+							<select  class="colsValue r" name="" id="">
+								<option {{value.cols == 1&&"selected"}} value="1">一列</option>
+								<option {{value.cols == 2&&"selected"}} value="2">两列</option>
+								<option {{value.cols == 3&&"selected"}} value="3">三列</option>
+							</select>
+							<span class="colsName r">列数：</span>
+						</div>
+					{{/if}}
+				</dt>
+				<dd class="attributeCon">
+
+					{{each value.checkFrame as val index }}
+					<div class="operCheckItem">
+							<input {{val.check?"checked":""}} name={{"choose"+i}} type={{value.realType == "checkbox" ? "checkbox":"radio" }} class="operCheck">
+							<input type="text" value={{val.content}} class="operInput">
+							<div class="remove l"></div>
+					</div>
+					{{/each}}
+				</dd>
+			{{/if}}
+		{{/each}}
+		<div class="addChoose"></div>
+	</script>
+
+	<script id="addCheck" type="text/html">
+		{{each data as value i}}
+			<div class="operCheckItem">
+					<input   type={{value.type == "checkbox" ? "checkbox":"radio" }} class="operCheck">
+					<input type="text" value={{value.name}} class="operInput">
+					<div class="remove l">---</div>
+			</div>
+		{{/each}}
+	</script>
+
+	<script id="addFCheck" type="text/html">
+		{{each data as value i}}
+			{{if value.type == "checkbox" || value.type == "radio"}}
+				<div class="checkItem">
+					<lable>
+						<input disabled class="moreCheck rocheck" type={{value.type}}>
+						<span class="moreCheckName rocheckName">{{value.name}}</span>
+					</lable>
+				</div>
+			{{else if value.type=="select"}}
+				<option class="checkItem" value={{value.name}}>{{value.name}}</option>
+			{{/if}}
+		{{/each}}
+	</script>
+	<script src='./bind.js' type="text/javascript"></script>
+	<script src='./form.js' type="text/javascript"></script>
+</head>
+<body>
+	<!-- <div data-bind-123="name"  contenteditable></div> -->
+	<div id="contain">
+		<!-- 表单选项 -->
+		<div id="inputSelect">
+			<div class="formTitleName">
+				添加表单组件
+			</div>
+			<ul id="standCompoent">
+				<li class="compoentTit">标准组件</li>
+				<li type="stext" class="elem">单行文本</li>
+				<li type="mtext" class="elem">多行文本</li>
+				<li type="mcheck" class="elem">多选</li>
+				<li type="scheck" class="elem">单选</li>
+				<li type="select" class="elem">下拉选框</li>
+				<li type="picture" class="elem">图片</li>
+				<li type="hr" class="elem">分割线</li>
+				<li type="describe" class="elem">描述说明</li>
+				<li type="date" class="elem">日期</li>
+				<li type="time" class="elem">时间</li>
+				<li type="number" class="elem">数字输入框</li>
+				<li type="file" class="elem">附件</li>
+			</ul>
+			<ul id="usuaCompoent" class="noeditor" >
+				<li class="compoentTit uauslly">常用组件</li>
+				<li type="phone" class="elem">联系手机</li>
+				<li type="QQ" class="elem">联系QQ</li>
+				<li type="weixin" class="elem">微信号</li>
+				<li type="email" class="elem">邮箱</li>
+				<li type="IDnumber" class="elem">身份证号</li>
+				<li type="password" class="elem">游戏密码</li>
+				<li type="price" class="elem">价格</li>
+				<li type="title" class="elem">标题</li>
+				<li type="server" class="elem">服务器</li>
+				<li type="operator" class="elem">运营商</li>
+			</ul>
+		</div>
+		<div id="formContain">
+			<div class="formTitle">
+				<div class="formTitleName">商品信息</div>
+				<div class="blank"></div>
+			</div>
+			<div id="toost">从左边选取相应控件</div>
+			<div id="form">
+			<!-- 表单控制 -->
+			</div>
+		</div>
+		<!-- 当前表单控件 -->
+		<div id="curFormItem">
+			<div class="formTitleName">表单组件属性</div>
+			<div id="noChooseForm">
+				<p>没有控件请选择</p>
+				<p>请选择左边控件再做编辑</p>
+			</div>
+			<div id="setItem">
+				<dl class="attributeItem">
+					<dt class="attributeName">字段名称</dt>
+					<dd class="attributeCon">
+						<textarea id="attrName" class="control-itemName" name="name" ></textarea>
+					</dd>
+				</dl>
+				<dl class="attributeItem">
+					<dt class="attributeName l">字段类型</dt>
+					<dd class="attributeCon l">
+						<div id="attrType" class=""></div>
+					</dd>
+				</dl>
+				<dl class="attributeItem">
+					<dt class="attributeName">描述</dt>
+					<dd class="attributeCon">
+						<textarea id="attrDescribe" class="control-describe" name="name" ></textarea>
+					</dd>
+				</dl>
+				<dl id="specialArea" class="attributeItem">
+					<dt class="attributeName">选项设置</dt>
+					<dd class="attributeCon">
+					</dd>
+				</dl>
+				<dl class="attributeItem">
+					<dt class="attributeName">必填设置</dt>
+					<dd class="attributeCon">
+						<label class="pointer">
+							<input id="attrRquire" type="checkbox" class="l control-require">
+							<span class="l requireTag">必填</span>
+						</label>
+					</dd>
+				</dl>
+				<dl class="attributeItem">
+					<dt class="attributeName">前端可见性</dt>
+					<dd class="attributeCon">
+						<label class="pointer">
+							<input id="attrVisible" type="checkbox" class="l control-visible">
+							<span class="l visibleTag">不可见</span>
+						</label>
+					</dd>
+				</dl>
+			</div>
+		</div>
+
+	</div>
+	<div id="save" class="save">保存</div>
+
+</body>
+<script type="text/javascript">
+var noniData = [//测试数据
+		{
+			"type" : "stext",//本生
+			"name" : "吃了",//名称
+			"describe" : "吃了吃了吃了1",//描述
+			"require" : false,//必填
+			'novisible' : false//可见}
+		},
+		{
+			"type" : "mtext",//本生
+			"name" : "吃了",//名称
+			"describe" : "吃了吃了吃了2",//描述
+			"require" : false,//必填
+			'novisible' : false//可见}
+		},
+		{
+			"type" : "select",//本生
+			"name" : "吃了",//名称
+			"describe" : "吃了吃了吃了3",//描述
+			"require" : false,//必填
+			'novisible' : false,//可见
+			"checkFrame":[
+				{"check":false,"content":"下拉1"},
+				{"check":true,"content":"下拉2"},
+				{"check":false,"content":"下拉3"}
+			]
+		},
+		{
+			"type" : "mcheck",//本生
+			"name" : "吃了",//名称
+			"describe" : "暂无",//描述
+			"require" : false,//必填
+			'novisible' : false,//可见
+			"cols" : 1,//列数
+			"checkFrame":[
+				{"check":false,"content":"多选1"},
+				{"check":true,"content":"多选2"},
+				{"check":false,"content":"多选3"}
+			]
+		},
+		{
+			"type" : "scheck",//本生
+			"name" : "吃了",//名称
+			"describe" : "暂无",//描述
+			"require" : false,//必填
+			'novisible' : false,//可见
+			"cols" : 1,//列数
+			"checkFrame":[
+				{"check":false,"content":"单选1"},
+				{"check":false,"content":"单选2"},
+				{"check":false,"content":"单选3"}
+			]
+		}
+	]
+	window.onload=function(){
+		var user = new User(123);
+		user.set( "name", "Wolfgang" );
+		var form = new Form({
+			data:[]
+		});
+
+		$("#save").on("click",function(){//保存数据
+      console.log(form.getData());
+			localStorage.setItem("form",JSON.stringify(form.getData()));
+			window.open('./viewTamplate.html');
+    })
+	}
+</script>
+</html>

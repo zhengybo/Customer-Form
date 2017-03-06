@@ -1,0 +1,484 @@
+body{
+  height: 100%;
+}
+
+.pointer{
+  cursor: pointer;
+  user-select:none;
+}
+
+#contain{
+  min-width: 1150px;
+  height: 600px;
+}
+
+#formContain{
+  height: 625px;
+  min-width:500px;
+  margin-left: 30px;
+  border:1px solid #f2f2f2;
+  float: left;
+  position: relative;
+}
+
+#toost{
+  position: absolute;
+  top: 40px;
+  z-index: -1;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  width: 100%;
+  font-weight: bold;
+  display: none;
+}
+
+#formContain .formTitle{
+  height: 40px;
+  background-color: #f2f2f2;
+}
+
+#contain .formTitleName{
+  height: 36px;
+  color: #464646;
+  background-color: #f2f2f2;
+  text-align: center;
+  line-height: 36px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#formContain .blank{
+  height: 4px;
+  background-color: white;
+}
+
+#form{
+  /*width: 900px;*/
+  height:580px;
+  box-sizing: content-box;
+  overflow: auto;
+  position: relative;
+  user-select:none;
+}
+
+#form .form-item{
+  width: 99%;
+  /*height: 70px;*/
+  position: absolute;
+  border:1px solid transparent;
+  margin-left: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: white;
+}
+
+#form .form-item:hover{
+  border:1px dashed #d4d4d4;
+}
+
+#form .block{
+  height: 5px;
+}
+
+#standCompoent,#usuaCompoent{
+  overflow: hidden;
+}
+
+#usuaCompoent{
+  margin-top: 16px;
+}
+
+#inputSelect{
+  float: left;
+  width: 290px;
+  height: 625px;
+  overflow: auto;
+  border:1px solid #f2f2f2;
+}
+
+ .compoentTit{
+  text-indent: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+
+
+#inputSelect .elem{
+  width:108px;
+  height: 28px;
+  float: left;
+  margin: 0 5px 15px 20px;
+  border:1px dashed #ccc;
+  text-align: center;;
+  line-height: 28px;
+  font-size: 14px;
+  user-select:none;
+  cursor: pointer;
+}
+
+#form .form-content{
+  float: left;
+  width: 60%;
+  height: 100%;
+}
+
+#form .form-describe{
+  margin-top: 7px;
+  float: left;
+  width:30%;
+  height: 65px;
+  word-break: break-all;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical
+}
+
+
+
+#form .close{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 3px;
+  top: 3px;
+  font-size: 20px;
+  display: none;
+  background:  url('./../img/act.png') no-repeat -50px 4px;
+}
+
+#form .visibleIcon{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 3px;
+  top: 50%;
+  margin-top: -10px;
+  background: url('./../img/locksmall.png') no-repeat center center;
+  display: none;
+}
+
+#form .focus .close{
+  display: block;
+}
+
+#form .focus{
+  background-color: #f5fafd;
+}
+
+#form .formValue{
+  height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#form .formstyle{
+  overflow: hidden;
+  margin-left: 10px;
+  padding-bottom:5px;
+}
+
+#form .text{
+  height: 32px;
+  width: 200px;
+  border:1px solid #ccc;
+  cursor: pointer;
+}
+
+#form .move{
+  z-index: 999;
+}
+
+#form .requireFrame{
+  color: red;
+  line-height: 32px;
+  margin-left: 10px;
+  width: 10px;
+  font-size: 16px;
+  height: 32px;
+  float: left;
+}
+
+#form .require{
+  display: none;
+  line-height: 32px;
+}
+
+#form .formValueDeatail{
+  line-height: 32px;
+}
+
+ .moreText{
+  width: 200px;
+  height: 60px;
+  border:1px solid #ccc;
+  resize: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#form .select{
+  width: 200px;
+  height: 30px;
+  border:1px solid #ccc;
+  color: #666;
+  resize: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#form .rocheck{
+  float: left;
+  margin-top: 4px;
+}
+
+#form .rocheckName{
+  float: left;
+  margin-left: 8px;
+  line-height: 20px;
+  max-width: 80%;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#form .checkItem{
+  overflow: hidden;
+  width: 100%;
+  float: left;
+}
+
+#form input,#form select,#form textarea{
+  cursor: pointer;
+  text-indent: 10px;
+  user-select:none;
+}
+
+
+#form textarea,#form input[type="text"],#form select{
+  width: 80%!important;
+
+}
+
+#form .hms{
+  overflow: hidden;
+}
+
+#form .hsmBlock{
+  float: left;
+  text-align: center;
+  width: 50px;
+}
+
+#form .hor{
+  width: 10px;
+  line-height: 30px;
+  float: left;
+  text-align: center;
+}
+
+#form .dateInput,#form .timeSelect{
+  width: 48px;
+  height: 30px;
+  border:1px solid #ccc;
+}
+
+#form .timeSelect{
+  color: #666;
+}
+
+#form .dividLine{
+  border-top:1px dashed #ccc;
+}
+
+#form .smallTitle{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#form .picture{
+  width: 80%;
+  height: 100px;
+}
+
+#form .file{
+  width: 70%;
+  height: 30px;
+  border:1px solid #ccc;
+  float: left;
+}
+
+#form .scan{
+  width: 15%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  float: left;
+  border:1px solid #ccc;
+  margin-left: 10px;
+  background-color: #eaeaea;
+  color: #999;
+}
+
+#save{
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  border:1px solid #ccc;
+  user-select:none;
+  cursor: pointer;
+}
+
+
+
+#curFormItem {
+  float: left;
+  width: 286px;
+  height: 625px;
+  overflow: auto;
+  margin-left: 20px;
+  position: relative;
+  border:1px solid #f2f2f2;
+}
+
+#setItem{
+  position: absolute;
+  left: 12px;
+  top: 36px;;
+  padding-top:30px;
+  background-color: white;
+  display: none;
+}
+
+#noChooseForm{
+  text-align: center;
+  font-size: 16px;
+  padding-top:30px;
+}
+
+#curFormItem .attributeItem{
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+#curFormItem .attributeName{
+  font-size: 14px;
+  font-weight: bold;
+  text-indent: 10px;
+  line-height: 26px;
+}
+
+#curFormItem .control-itemName,#curFormItem .control-describe{
+  width: 244px;
+  padding: 8px;
+  resize: none;
+  border:1px solid #ccc;
+}
+
+#curFormItem .control-require,#curFormItem .control-visible{
+  margin: 9px 0 0 10px;
+
+  cursor: pointer;
+}
+
+
+#curFormItem .attributeCon{
+  overflow: hidden;
+}
+
+#curFormItem .requireTag,#curFormItem .visibleTag{
+  padding-left: 5px;
+  line-height: 30px;
+}
+
+#attrType{
+  width: 100px;
+  height: 26px;
+  margin-left: 10px;
+  border:1px solid #ccc;
+  line-height: 26px;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  user-select:none;
+  cursor: default;
+}
+
+#specialArea .operCheckItem{
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+#specialArea .operCheck{
+  margin:9px 0 0 10px;
+  float: left;
+  cursor: pointer;
+}
+
+
+#specialArea .operInput{
+  float: left;
+  width: 142px;
+  height: 28px;
+  margin-left: 8px;
+  padding: 0 8px;
+  border:1px solid #ccc;
+}
+
+#specialArea{
+  position: relative;
+}
+
+#specialArea .addChoose{
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+}
+
+#specialArea .remove{
+  width: 20px;
+  height: 28px;
+  margin-left: 15px;
+  line-height: 28px;
+  float: left;
+  cursor: pointer;
+  user-select:none;
+  background:  url('./../img/act.png') no-repeat -25px 5px;
+}
+
+#specialArea .addChoose{
+  width: 20px;
+  height: 28px;
+  line-height: 28px;
+  cursor: pointer;
+  user-select:none;
+  background:  url('./../img/act.png') no-repeat 0 5px;
+}
+
+#specialArea .cols{
+  line-height: 20px;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+#specialArea  .colsName{
+    line-height: 24px;
+}
+
+#specialArea .colsValue{
+  width: 100px;
+  height: 24px;
+  border:1px solid #ccc;
+}

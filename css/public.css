@@ -1,0 +1,13 @@
+body,div,ul,li,img,dl,dt,dd,a,p,h1,h2,h3,h4,h5,h6,input,span,button,form,select,article,figure,figcaption,textarea{padding:0;margin:0;border:0;list-style:none;}
+img{display:block;border:0;}
+input,textarea{
+	outline: none;
+}
+.w{width:1200px;margin:0 auto;}
+.l{float:left;}
+.r{float:right;}
+html{
+	height: 100%;
+}
+body{font-size:12px;font-family:"微软雅黑";color:#3e3e3e;height: 100%;min-height: 100%;}
+a{text-decoration: none;&:hover{text-decoration: none;user-select:none}}
